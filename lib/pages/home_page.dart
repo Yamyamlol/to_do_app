@@ -106,7 +106,8 @@ class _HomePageState extends State<HomePage>{
           {
             return ToDoTile(
               taskName: db.toDoList[index][0], 
-              TaskCompleted: db.toDoList[index][1], 
+              taskDescription: "",
+              taskCompleted: db.toDoList[index][1], 
               onChanged: (value) => checkBoxChanged(value, index),
               deleteFunction: (context) => deleteTask(index),
             );
