@@ -60,19 +60,20 @@ class _OnTapDialogBoxState extends State<OnTapDialogBox> {
         ),
       ),
       actions: <Widget>[
+        if (_newTaskName != widget.taskName)
+          TextButton(
+            onPressed: () {
+              // Save the new task name and pass it back to the callback function
+              widget.onEdit(_newTaskName);
+              Navigator.of(context).pop();
+            },
+            child: Text('Save'),
+          ),
         TextButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
           child: Text('Close'),
-        ),
-        TextButton(
-          onPressed: () {
-            // Save the new task name and pass it back to the callback function
-            widget.onEdit(_newTaskName);
-            Navigator.of(context).pop();
-          },
-          child: Text('Save'),
         ),
       ],
     );
