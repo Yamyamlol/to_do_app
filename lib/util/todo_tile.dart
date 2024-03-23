@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:to_do_app/util/on_tap_dialog_box.dart'; // Import the task details dialog widget
+import 'package:to_do_app/util/on_tap_dialog_box.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
@@ -8,6 +8,7 @@ class ToDoTile extends StatelessWidget {
   final bool taskCompleted;
   final Function(bool?)? onChanged;
   final Function(BuildContext)? deleteFunction;
+  final Function(String) editTaskName; // New callback for editing task name
 
   ToDoTile({
     Key? key,
@@ -16,6 +17,7 @@ class ToDoTile extends StatelessWidget {
     required this.taskCompleted,
     required this.onChanged,
     required this.deleteFunction,
+    required this.editTaskName,
   }) : super(key: key);
 
   @override
@@ -28,6 +30,7 @@ class ToDoTile extends StatelessWidget {
             return OnTapDialogBox(
               taskName: taskName,
               taskDescription: taskDescription,
+              onEdit: editTaskName, // Pass the edit task name callback
             );
           },
         );
